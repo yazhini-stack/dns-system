@@ -1,0 +1,50 @@
+; ==============================================================================
+;  Authoritative Zone File for mycompany.local
+; ==============================================================================
+$ORIGIN mycompany.local.
+$TTL 3600
+
+; Start of Authority Record
+@       IN  SOA     ns1.mycompany.local. hostmaster.mycompany.local. (
+                    2026100201 ; Serial
+                    7200       ; Refresh (2 hours)
+                    3600       ; Retry (1 hour)
+                    1209600    ; Expire (2 weeks)
+                    300        ; Negative Cache Minimum TTL (5 minutes)
+                    )
+
+; Authoritative Name Servers
+@       IN  NS      ns1.mycompany.local.
+@       IN  NS      ns2.mycompany.local.
+
+; Name Server IPv4 / IPv6 addresses
+ns1     IN  A       192.168.1.10
+ns2     IN  A       192.168.1.11
+
+; Host Records (A)
+gateway IN  A       192.168.1.1
+www     IN  A       192.168.1.50
+app     IN  A       192.168.1.55
+mail    IN  A       192.168.1.60
+db      IN  A       192.168.1.70
+
+; Host Records (AAAA)
+api     IN  AAAA    2001:db8:85a3::8a2e:370:7334
+ipv6app IN  AAAA    2001:db8::55
+
+; Mail Exchanger Records (MX)
+@       IN  MX  10  mail.mycompany.local.
+@       IN  MX  20  mail-backup.mycompany.local.
+
+; Canonical Name Records (CNAME)
+web     IN  CNAME   www.mycompany.local.
+portal  IN  CNAME   app.mycompany.local.
+smtp    IN  CNAME   mail.mycompany.local.
+
+; Text Records (TXT)
+@       IN  TXT     "v=spf1 mx ip4:192.168.1.60 -all"
+info    IN  TXT     "Development DNS Server Node - Antigravity"
+
+; Pointer Records (PTR)
+1       IN  PTR     gateway.mycompany.local.
+50      IN  PTR     www.mycompany.local.

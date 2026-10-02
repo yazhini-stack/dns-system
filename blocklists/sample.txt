@@ -1,0 +1,19 @@
+# ==============================================================================
+#  Sample DNS Blocklist (Ad/Telemetry/Malware Domains)
+# ==============================================================================
+
+# Exact Match Domains
+ads.example.com
+badware-tracker.com
+telemetry.testbad.org
+spy-analytics.net
+
+# Wildcard Subdomain Rules
+*.doubleclick.net
+*.google-analytics.com
+*.telemetry.microsoft.com
+*.adservice.google.com
+*.adnxs.com
+*.criteo.com
+*.tracking.adservice.com
+adserver.*
